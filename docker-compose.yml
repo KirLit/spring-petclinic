@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db:
+   image: mysql:5.7.8
+   ports:
+     - "3306:3306"
+   volumes:
+     - db_data:/var/lib/mysql
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: petclinic
+     MYSQL_DATABASE: petclinic
+
+  tomcatservice:
+    image: webimage 
+    ports:
+      - "9000:8080"
+    
+volumes:
+  db_data:
+
