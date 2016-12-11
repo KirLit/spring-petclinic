@@ -1,0 +1,23 @@
+version: '2'
+services:
+  db:
+   image: mysql:5.7.8
+   container_name: prod-db
+   ports:
+     - "3307:3306"
+   volumes:
+     - db_data_prod:/var/lib/mysql
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: petclinic
+     MYSQL_DATABASE: petclinic
+
+  tomcatservice:
+    image: webimage 
+    container_name: prod-tomcat
+    ports:
+      - "9001:8080"
+    
+volumes:
+  db_data_prod:
+
